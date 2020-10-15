@@ -52,8 +52,8 @@ export default {
     methods: {
         ...mapActions(["eliminarReserva"]),
         eliminar(id) {
-            console.log(id),
-                this.eliminarReserva(id)
+            //console.log(id),
+            this.eliminarReserva(id)
 
         }
     }

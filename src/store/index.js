@@ -11,7 +11,7 @@ export default new Vuex.Store({
     reservas: [
       {
         id:1,
-        name: "Prueba 1",
+        name: "Natalia Acevedo",
         date: moment().format("YYYY-MM-DD"),
         start: "10:00",
         end: "11:00",
@@ -19,7 +19,7 @@ export default new Vuex.Store({
       },
       {
         id:2,
-        name: "Prueba 2",
+        name: "Ignacio",
         date: moment().format("YYYY-MM-DD"),
         start: "13:00",
         end: "15:00",
