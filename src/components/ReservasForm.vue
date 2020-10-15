@@ -1,20 +1,29 @@
 <template>
-<div class="reservation">
+<b-container class="reservation">
     <h4>RESERVAR</h4>
-
-    <div>
-        <b-form inline>
-
+    <b-row>
+        <b-col class="inputs" cols="4">
+            <label class="label" for="inline-form-input-name">Nombre</label>
             <b-input id="inline-form-input-name" v-model="form.name" class="name  mr-sm-2 mb-sm-0"></b-input>
+        </b-col>
+        <b-col class="inputs" cols="2">
+            <label class="label" for="datepicker">Fecha</label>
             <b-form-datepicker v-model="form.date" id="datepicker" class="input mb-2" placeholder="30/9/2019"></b-form-datepicker>
+        </b-col>
+        <b-col class="inputs" cols="2">
+            <label class="label" for="timepickerIn">Desde</label>
             <b-form-timepicker v-model="form.start" id="timepickerIn" class="input mb-2" placeholder="12:00" locale="en"></b-form-timepicker>
+        </b-col>
+        <b-col class="inputs" cols="2">
+            <label class="label" for="timepickerOut">Hasta</label>
             <b-form-timepicker v-model="form.end" id="timepickerOut" class="input mb-2" placeholder="13:00" locale="en"></b-form-timepicker>
-
+        </b-col>
+        <b-col class="button" cols="2">
             <b-button @click="guardar" class="buttonGuardar">Guardar</b-button>
-        </b-form>
-    </div>
+        </b-col>
+    </b-row>
 
-</div>
+</b-container>
 </template>
 
 <script>
@@ -36,23 +45,16 @@ export default {
     },
     methods: {
         ...mapActions(["guardarReserva"]),
-        onSubmit(evt) {
-            evt.preventDefault();
-            alert(JSON.stringify(this.form));
-        },
-        onReset(evt) {
-            evt.preventDefault();
-            // Reset our form values
 
-            this.form.name = "";
-        },
         guardar() {
             this.guardarReserva({
                 name: this.form.name,
                 date: this.form.date,
                 start: this.form.start,
                 end: this.form.end,
-                id: Math.floor(Math.random() * (0, 100))
+                id: Math.floor(Math.random() * (0, 100)),
+                state: "green"
+
             })
             this.form.name = ""
             this.form.date = ""
@@ -64,26 +66,33 @@ export default {
 </script>
 
 <style>
-.reservation {
-    margin: 30px;
-
-}
-
-.input {
-    margin: 10px;
-    /*box-shadow: 11px 11px 18px -12px rgba(0, 0, 0, 0.75);*/
-
-}
-
 .reservation h4 {
     color: #077041;
     font-weight: bold;
     display: flex;
     text-align: left;
+
 }
 
-.name td {
+.button {
+    margin-top: 21px !important;
+}
+
+.inputs {
+    padding: 5px !important;
+}
+
+.label {
+    display: flex;
+    text-align: left;
+}
+
+td {
     font-weight: bold;
+}
+
+.bi-trash-fill {
+    color: gray;
 }
 
 .buttonGuardar {

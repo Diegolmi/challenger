@@ -9,13 +9,13 @@
                 <b-icon icon="app" class="iconGreen"></b-icon>Mi Reserva Actual
             </p>
             <p>
-                <b-icon icon="app" class="iconYellow" variant="warning"></b-icon>Reservado
+                <b-icon icon="app" class="iconYellow"></b-icon>Reservado
             </p>
             <p>
-                <b-icon icon="app"></b-icon>Disponible
+                <b-icon icon="app" class="iconWhite"></b-icon>Disponible
             </p>
         </div>
-        <Timeline ref="timeline" :items="items" :options="options"> </Timeline>
+        <Timeline :items="items" :groups="groups" :options="options"></Timeline>
     </div>
 
     <ListReservas />
@@ -25,12 +25,14 @@
 <script>
 import ReservasForm from "../components/ReservasForm";
 import ListReservas from "../components/ListReservas";
-
 import {
-    Timeline
-} from "vue2vis";
+    mapActions,
+    mapState
+} from "vuex";
+import Timeline from "../components/Timeline";
 
 export default {
+
     name: "Home",
     components: {
         ReservasForm,
@@ -39,21 +41,10 @@ export default {
     },
     data() {
         return {
-            items: [{
-                    id: 1,
-                    content: "Reserva 1",
-                    group: 0,
-                    start: "2019-03-1 10:00",
-                    end: "2019-03-1 10:30",
-                },
-                {
-                    id: 2,
-                    content: "Reserva 2",
-                    group: 0,
-                    start: "2019-03-1 11:00",
-                    end: "2019-03-1 11:45",
-                },
-            ],
+            groups: [{
+                id: 0,
+                content: "grupo 0"
+            }],
             options: {
                 //stack: false,
                 orientation: {
@@ -66,6 +57,22 @@ export default {
             },
         };
     },
+    computed: {
+        ...mapState(["reservas"]),
+        items() {
+            return this.reservas.map(reserva => {
+                return {
+                    id: reserva.id,
+                    content: reserva.name,
+                    start: reserva.date + " " + reserva.start,
+                    end: reserva.date + " " + reserva.end,
+                    group: 0,
+                    className: reserva.state
+                }
+            })
+        }
+
+    }
 };
 </script>
 
@@ -79,19 +86,24 @@ export default {
 .icons {
     display: flex;
     flex-direction: row-reverse;
-
-    /*margin: 2px;*/
 }
 
 .iconGreen {
     background: #42b983;
     margin-left: 30px;
+    margin-right: 5px;
 
 }
 
 .iconYellow {
-    background: yellow;
+    background: #fff38c;
     margin-left: 30px;
+    margin-right: 5px;
+
+}
+
+.iconWhite {
+    margin-right: 5px;
 
 }
 

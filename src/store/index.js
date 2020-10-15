@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import moment from 'moment'
 
 Vue.use(Vuex)
 
@@ -8,6 +9,22 @@ export default new Vuex.Store({
   
   state: {
     reservas: [
+      {
+        id:1,
+        name: "Prueba 1",
+        date: moment().format("YYYY-MM-DD"),
+        start: "10:00",
+        end: "11:00",
+        state: "orange"
+      },
+      {
+        id:2,
+        name: "Prueba 2",
+        date: moment().format("YYYY-MM-DD"),
+        start: "13:00",
+        end: "15:00",
+        state: "orange"
+      }
     ]
   },
   mutations: {
@@ -31,6 +48,4 @@ export default new Vuex.Store({
 
   },
   
-  modules: {
-  }
 })
