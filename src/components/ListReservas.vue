@@ -61,7 +61,5 @@ export default {
 </script>
 
 <style>
-.table {
-    margin: 15px;
-}
+
 </style>

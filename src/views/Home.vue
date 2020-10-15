@@ -6,13 +6,13 @@
         <h4>Agenda de Reservas</h4>
         <div class="icons" inline>
             <p>
-                <b-icon icon="app" class="iconGreen"></b-icon>Mi Reserva Actual
+                <b-icon icon="app" class="rounded iconGreen"></b-icon>Mi Reserva Actual
             </p>
             <p>
-                <b-icon icon="app" class="iconYellow"></b-icon>Reservado
+                <b-icon icon="app" class="rounded iconYellow"></b-icon>Reservado
             </p>
             <p>
-                <b-icon icon="app" class="iconWhite"></b-icon>Disponible
+                <b-icon icon="app" class="rounded iconWhite"></b-icon>Disponible
             </p>
         </div>
         <Timeline :items="items" :groups="groups" :options="options"></Timeline>
@@ -63,7 +63,6 @@ export default {
             return this.reservas.map(reserva => {
                 return {
                     id: reserva.id,
-                    content: reserva.name,
                     start: reserva.date + " " + reserva.start,
                     end: reserva.date + " " + reserva.end,
                     group: 0,
@@ -77,7 +76,9 @@ export default {
 </script>
 
 <style lang="css">
-@import "../../node_modules/vue2vis/dist/vue2vis.css";
+.home {
+    padding: 30px;
+}
 
 .Timeline {
     margin: 30px;

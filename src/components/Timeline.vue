@@ -1,13 +1,13 @@
 <template>
 <div class="row">
     <div class="col-1">
-        <i class="material-icons dp48 buttons-menu" id="moveLeft" @click="moveLeft()">arrow_back</i>
+        <b-icon icon="chevron-left" class="h3 mb-2 mt-5" id="moveLeft" @click="moveLeft()">arrow_back</b-icon>
     </div>
     <div class="col-10" id="visualization">
         <input style="display:none;" id="sliderZoom" @input="zoom()" type="range" class="range" name="a" min="-1" max="1" step="0.1" value="0" />
     </div>
     <div class="col-1">
-        <i class="material-icons dp48 buttons-menu" id="moveRight" @click="moveRight()">arrow_forward</i>
+        <b-icon icon="chevron-right" class="h3 mb-2 mt-5" id="moveRight" @click="moveRight()">arrow_forward</b-icon>
     </div>
 </div>
 </template>
@@ -144,20 +144,24 @@ input {
 .vis-item.orange {
     background-color: #fff38c;
     border-color: #fff38c;
+    opacity: 0.7;
 }
 
 .vis-item.vis-selected.orange {
     background-color: #fff38c;
     border-color: #fff38c;
+    opacity: 0.7;
 }
 
 .vis-item.green {
     background-color: #5df39b;
     border-color: #4df392;
+    opacity: 0.7;
 }
 
 .vis-item.vis-selected.green {
     background-color: #4df392;
     border-color: #4df392;
+    opacity: 0.7;
 }
 </style>
